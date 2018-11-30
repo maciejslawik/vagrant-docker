@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+
+sudo locale-gen "en_US.UTF-8"
+sudo dpkg-reconfigure locales
+
+sudo sysctl -w vm.max_map_count=262144
+
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
 add-apt-repository \
@@ -9,6 +15,9 @@ add-apt-repository \
 echo "deb http://ppa.launchpad.net/nginx/stable/ubuntu $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/nginx-stable.list
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C300EE8C
 
+apt-get install software-properties-common python-software-properties
+sudo add-apt-repository -y ppa:ondrej/php
+
 apt-get update
 apt-get install -y \
     linux-image-extra-$(uname -r) \
@@ -18,36 +27,12 @@ apt-get install -y \
     curl \
     software-properties-common \
     docker-ce \
-    php7.0-common \
-    php7.0-pgsql \
-    php7.0-mysql \
-    php7.0-fpm \
-    nginx
+    php7.2-common \
+    git \
+    php-codesniffer \
+    vim
 
-curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > /usr/bin/docker-compose
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.23.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
-usermod -aG docker ubuntu
-
-wget "http://www.adminer.org/latest.php" -O /var/www/html/index.php
-
-echo "server {
-	listen 8080;
-	listen [::]:8080;
-	root "/var/www/html";
-	charset utf-8;
-	index index.php index.html index.htm index.nginx-debian.html;
-	server_name adminer;
-	location / {
-      try_files \$uri \$uri/ /index.php?\$query_string;
-    	sendfile off;
-  }
-	location ~ \.php$ {
-		try_files \$uri =404;
-		fastcgi_split_path_info ^(.+\.php)(/.+)$;
-  	fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
-  	fastcgi_index index.php;
-  	include fastcgi_params;
-  	fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
-	}
-}" > /etc/nginx/sites-available/default
-service nginx restart
+usermod -aG docker vagrant

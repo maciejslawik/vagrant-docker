@@ -1,0 +1,4 @@
+Vagrantfile
+.idea/
+*.log
+.vagrant/
