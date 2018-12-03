@@ -20,5 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.customize ["modifyvm", :id, "--ostype", "Ubuntu_64"]
   end
-  config.vm.provision "shell", path: "./provision.sh", privileged: true
+
+  config.vm.provision "shell", path: "./scripts/provision.sh", privileged: true
+  config.vm.provision "shell", path => "./scripts/startup.sh", run => 'always', privileged => true
 end

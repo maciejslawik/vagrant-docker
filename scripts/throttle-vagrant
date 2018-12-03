@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+VBOX_HEADLESS_PID=$(pgrep VBoxHeadless)
+VBOX_PROCESS_LIMIT="70"
+
+echo "Limiting VBoxHeadless process ("${VBOX_HEADLESS_PID}") to "${VBOX_PROCESS_LIMIT}"% CPU"
+./scripts/cputhrottle ${VBOX_HEADLESS_PID} ${VBOX_HEADLESS_PID} &

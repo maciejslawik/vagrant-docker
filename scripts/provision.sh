@@ -3,8 +3,6 @@
 sudo locale-gen "en_US.UTF-8"
 sudo dpkg-reconfigure locales
 
-sudo sysctl -w vm.max_map_count=262144
-
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
 add-apt-repository \

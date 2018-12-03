@@ -20,6 +20,8 @@ It additionally has PHP7.2
 
 2. Add the IP of the VM to your ```/etc/hosts```
 
-3. Run ```vagrant up```
+3. Run:
+  * ```vagrant up``` to simply start Vagrant
+  * ```./start``` to start Vagrant and limit CPU usage of the Vagrant process
 
 
