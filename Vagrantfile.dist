@@ -11,6 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = "ubuntu-developer"
   config.vm.network :private_network, ip: VM_IP
   config.vm.synced_folder HOST_PROJECTS_PATH, VM_PROJECTS_PATH, type: "nfs"
+  config.disksize.size = '50GB'
 
   config.vm.provider "virtualbox" do |vb|
     vb.name = "ubuntu-developer"

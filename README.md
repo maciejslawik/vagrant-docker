@@ -7,6 +7,14 @@ It uses Virtualbox and Vagrant to create and provision
 a virtual machine. The machine has docker with docker-compose.
 It additionally has PHP7.2
 
+### Prerequisites ###
+
+This Vagrantfile uses ``vagrant-disksize`` plugin. To install the plugin use the
+following command
+
+```
+vagrant plugin install vagrant-disksize
+```
 
 ### Usage ###
 
