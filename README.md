@@ -30,6 +30,7 @@ vagrant plugin install vagrant-disksize
 
 3. Run:
   * ```vagrant up``` to simply start Vagrant
+  * ```vagrant halt``` to stop Vagrant
   * ```./start``` to start Vagrant and limit CPU usage of the Vagrant process
 
 

@@ -2,3 +2,5 @@ Vagrantfile
 .idea/
 *.log
 .vagrant/
+shared/*
+!shared/.gitkeep
