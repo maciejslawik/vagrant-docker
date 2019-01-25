@@ -1,5 +1,6 @@
 Vagrantfile
 .idea/
+.DS_Store
 *.log
 .vagrant/
 shared/*

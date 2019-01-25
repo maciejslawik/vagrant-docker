@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 vagrant up
-sudo ./scripts/throttle-vagrant
+#sudo ./scripts/throttle-vagrant
 vagrant ssh
